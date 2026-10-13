@@ -968,59 +968,6 @@ body.hovering .cursor-ring { width: 60px; height: 60px; border-color: var(--gold
     transform: scale(1.12);
 }
 
-.gallery-item .overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 40%, rgba(5,5,8,0.95) 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.4rem;
-    opacity: 0;
-    transition: opacity 0.5s;
-}
-
-.gallery-item:hover .overlay { opacity: 1; }
-
-.gallery-item .overlay .tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.4rem;
-    transform: translateY(10px);
-    transition: transform 0.5s var(--ease-out-expo);
-}
-
-.gallery-item:hover .overlay .tag { transform: translateY(0); }
-
-.gallery-item .overlay .caption {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-style: italic;
-    color: var(--cream);
-    line-height: 1.3;
-    transform: translateY(10px);
-    transition: transform 0.5s var(--ease-out-expo) 0.05s;
-}
-
-.gallery-item:hover .overlay .caption { transform: translateY(0); }
-
-.gallery-item .index {
-    position: absolute;
-    top: 12px; right: 12px;
-    font-family: 'Playfair Display', serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--gold);
-    background: rgba(5,5,8,0.7);
-    backdrop-filter: blur(10px);
-    padding: 0.35rem 0.8rem;
-    border-radius: 50px;
-    border: 1px solid rgba(212,175,55,0.3);
-    letter-spacing: 0.1em;
-}
-
 /* ============================================================
    LIGHTBOX
    ============================================================ */
@@ -1364,7 +1311,6 @@ footer .divider {
     .oath, .project-card, .legacy { padding: 2.5rem 1.5rem; }
     .chapter-badge { margin-left: 0; }
     .gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.9rem; }
-    .gallery-item .overlay { opacity: 1; background: linear-gradient(180deg, transparent 50%, rgba(5,5,8,0.9) 100%); }
     .lightbox-nav { width: 45px; height: 45px; }
     .lightbox-nav.prev { left: 1rem; }
     .lightbox-nav.next { right: 1rem; }
@@ -1679,75 +1625,65 @@ Ceci n'est que le début.`,
 /* ============================================================
    ⚠️  ZONE 2 : TA GALERIE
    ------------------------------------------------------------
-   🔥 TOUTES TES IMAGES ET VIDÉOS SONT PRÉ-CHARGÉES !
+   25 IMAGES : image-parcours1.png → image-parcours25.png
+   25 VIDÉOS : video-parcours1.mp4 → video-parcours25.mp4
    
-   📁 Structure attendue à côté de ton index.html :
-      ├── index.html
-      ├── image-parcours1.png
-      ├── image-parcours2.png
-      ├── ...
-      ├── image-parcours25.png
-      ├── video-parcours1.mp4
-      ├── video-parcours2.mp4
-      ├── ...
-      └── video-parcours25.mp4
-   
-   💡 Tu peux modifier les légendes (caption) ci-dessous.
+   📁 Mets tous les fichiers à côté de index.html.
    ============================================================ */
 const GALERIE = [
     // ========== 25 IMAGES ==========
-    { type: "image", src: "image-parcours1.png",  caption: "Le commencement",          tag: "photo" },
-    { type: "image", src: "image-parcours2.png",  caption: "Calavi, terre d'aventure", tag: "photo" },
-    { type: "image", src: "image-parcours3.png",  caption: "Sinsin — première entrée", tag: "photo" },
-    { type: "image", src: "image-parcours4.png",  caption: "L'amitié sincère",         tag: "photo" },
-    { type: "image", src: "image-parcours5.png",  caption: "Le bac, enfin !",          tag: "photo" },
-    { type: "image", src: "image-parcours6.png",  caption: "L'EIG — le grand saut",    tag: "photo" },
-    { type: "image", src: "image-parcours7.png",  caption: "Mémé Sinatou",             tag: "photo" },
-    { type: "image", src: "image-parcours8.png",  caption: "Dans le noir, ensemble",   tag: "photo" },
-    { type: "image", src: "image-parcours9.png",  caption: "Porto-Novo",               tag: "photo" },
-    { type: "image", src: "image-parcours10.png", caption: "La porte qui s'est fermée",tag: "photo" },
-    { type: "image", src: "image-parcours11.png", caption: "Traversée du désert",      tag: "photo" },
-    { type: "image", src: "image-parcours12.png", caption: "Solo dans mes chagrins",   tag: "photo" },
-    { type: "image", src: "image-parcours13.png", caption: "Nigeria — la liberté",     tag: "photo" },
-    { type: "image", src: "image-parcours14.png", caption: "Le retour, plus fort",     tag: "photo" },
-    { type: "image", src: "image-parcours15.png", caption: "Ouidah — le premier pas",  tag: "photo" },
-    { type: "image", src: "image-parcours16.png", caption: "Les 25 litres sur la moto",tag: "photo" },
-    { type: "image", src: "image-parcours17.png", caption: "Apprendre, encore",        tag: "photo" },
-    { type: "image", src: "image-parcours18.png", caption: "Barman, mixologue…",       tag: "photo" },
-    { type: "image", src: "image-parcours19.png", caption: "SelosConnect — l'idée",    tag: "photo" },
-    { type: "image", src: "image-parcours20.png", caption: "Le serment intérieur",     tag: "photo" },
-    { type: "image", src: "image-parcours21.png", caption: "Calavi, toujours debout",  tag: "photo" },
-    { type: "image", src: "image-parcours22.png", caption: "Pethutlle — merci",        tag: "photo" },
-    { type: "image", src: "image-parcours23.png", caption: "La vision s'affine",       tag: "photo" },
-    { type: "image", src: "image-parcours24.png", caption: "2027 — l'horizon",         tag: "photo" },
-    { type: "image", src: "image-parcours25.png", caption: "La légende commence",      tag: "photo" },
+    { type: "image", src: "image-parcours1.png",  caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours2.png",  caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours3.png",  caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours4.png",  caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours5.png",  caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours6.png",  caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours7.png",  caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours8.png",  caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours9.png",  caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours10.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours11.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours12.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours13.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours14.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours15.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours16.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours17.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours18.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours19.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours20.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours21.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours22.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours23.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours24.png", caption: "", tag: "photo" },
+    { type: "image", src: "image-parcours25.png", caption: "", tag: "photo" },
 
     // ========== 25 VIDÉOS ==========
-    { type: "video", src: "video-parcours1.mp4",  caption: "Les prémices du voyage",      tag: "video" },
-    { type: "video", src: "video-parcours2.mp4",  caption: "Calavi — les débuts",         tag: "video" },
-    { type: "video", src: "video-parcours3.mp4",  caption: "Sinsin, jour 1",              tag: "video" },
-    { type: "video", src: "video-parcours4.mp4",  caption: "Les amitiés qui comptent",    tag: "video" },
-    { type: "video", src: "video-parcours5.mp4",  caption: "Le bac — explosion de joie", tag: "video" },
-    { type: "video", src: "video-parcours6.mp4",  caption: "L'EIG — première rentrée",    tag: "video" },
-    { type: "video", src: "video-parcours7.mp4",  caption: "Hommage à Mémé",              tag: "video" },
-    { type: "video", src: "video-parcours8.mp4",  caption: "La nuit la plus dure",        tag: "video" },
-    { type: "video", src: "video-parcours9.mp4",  caption: "Porto, au revoir",            tag: "video" },
-    { type: "video", src: "video-parcours10.mp4", caption: "Le signe de sa présence",     tag: "video" },
-    { type: "video", src: "video-parcours11.mp4", caption: "Les 4 mois de solitude",      tag: "video" },
-    { type: "video", src: "video-parcours12.mp4", caption: "Trader la nuit",              tag: "video" },
-    { type: "video", src: "video-parcours13.mp4", caption: "Tout perdre en un jour",      tag: "video" },
-    { type: "video", src: "video-parcours14.mp4", caption: "Nigeria — la délivrance",     tag: "video" },
-    { type: "video", src: "video-parcours15.mp4", caption: "Retour à la réalité",         tag: "video" },
-    { type: "video", src: "video-parcours16.mp4", caption: "Ouidah, dans l'inconnu",      tag: "video" },
-    { type: "video", src: "video-parcours17.mp4", caption: "Le jus de coco raté",         tag: "video" },
-    { type: "video", src: "video-parcours18.mp4", caption: "Barman autodidacte",          tag: "video" },
-    { type: "video", src: "video-parcours19.mp4", caption: "Monsieur Wass",               tag: "video" },
-    { type: "video", src: "video-parcours20.mp4", caption: "Fridaousse — 1 semaine 5 jours", tag: "video" },
-    { type: "video", src: "video-parcours21.mp4", caption: "SelosConnect prend forme",    tag: "video" },
-    { type: "video", src: "video-parcours22.mp4", caption: "Le prototype",                tag: "video" },
-    { type: "video", src: "video-parcours23.mp4", caption: "La vision finale",            tag: "video" },
-    { type: "video", src: "video-parcours24.mp4", caption: "Vers 2027",                   tag: "video" },
-    { type: "video", src: "video-parcours25.mp4", caption: "La licorne s'envole",         tag: "video" },
+    { type: "video", src: "video-parcours1.mp4",  caption: "", tag: "video" },
+    { type: "video", src: "video-parcours2.mp4",  caption: "", tag: "video" },
+    { type: "video", src: "video-parcours3.mp4",  caption: "", tag: "video" },
+    { type: "video", src: "video-parcours4.mp4",  caption: "", tag: "video" },
+    { type: "video", src: "video-parcours5.mp4",  caption: "", tag: "video" },
+    { type: "video", src: "video-parcours6.mp4",  caption: "", tag: "video" },
+    { type: "video", src: "video-parcours7.mp4",  caption: "", tag: "video" },
+    { type: "video", src: "video-parcours8.mp4",  caption: "", tag: "video" },
+    { type: "video", src: "video-parcours9.mp4",  caption: "", tag: "video" },
+    { type: "video", src: "video-parcours10.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours11.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours12.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours13.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours14.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours15.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours16.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours17.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours18.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours19.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours20.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours21.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours22.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours23.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours24.mp4", caption: "", tag: "video" },
+    { type: "video", src: "video-parcours25.mp4", caption: "", tag: "video" },
 ];
 
 /* ============================================================
@@ -1763,12 +1699,12 @@ function escapeHtml(text) {
 function renderMedia(m) {
     if (!m || !m.src) return '';
     if (m.type === 'image') {
-        return `<div class="media-item" data-type="image" data-src="${m.src}" data-caption="">
-            <img src="${m.src}" alt="Souvenir" loading="lazy" onerror="this.parentElement.style.display='none'">
+        return `<div class="media-item" data-type="image" data-src="${m.src}">
+            <img src="${m.src}" alt="" loading="lazy" onerror="this.parentElement.style.display='none'">
         </div>`;
     }
     if (m.type === 'video') {
-        return `<div class="media-item" data-type="video" data-src="${m.src}" data-caption="">
+        return `<div class="media-item" data-type="video" data-src="${m.src}">
             <video src="${m.src}" muted preload="metadata" onerror="this.parentElement.style.display='none'"></video>
         </div>`;
     }
@@ -1801,20 +1737,14 @@ function renderCard(s) {
     `;
 }
 
-function renderGalleryItem(item, index) {
-    const num = String(index + 1).padStart(2, '0');
+function renderGalleryItem(item) {
     const mediaHtml = item.type === 'image'
-        ? `<img src="${item.src}" alt="${escapeHtml(item.caption || '')}" loading="lazy" onerror="this.parentElement.style.display='none'">`
+        ? `<img src="${item.src}" alt="" loading="lazy" onerror="this.parentElement.style.display='none'">`
         : `<video src="${item.src}" muted preload="metadata" onerror="this.parentElement.style.display='none'"></video>`;
 
     return `
-        <div class="gallery-item" data-tag="${item.tag || 'all'}" data-type="${item.type}" data-src="${item.src}" data-caption="${escapeHtml(item.caption || '')}">
-            <span class="index">${num}</span>
+        <div class="gallery-item" data-tag="${item.tag || 'all'}" data-type="${item.type}" data-src="${item.src}">
             ${mediaHtml}
-            <div class="overlay">
-                <div class="tag">${item.type === 'image' ? 'Photo' : 'Vidéo'} · ${escapeHtml(item.tag || '')}</div>
-                <div class="caption">${escapeHtml(item.caption || '')}</div>
-            </div>
         </div>
     `;
 }
@@ -1901,18 +1831,10 @@ function openLightbox(index) {
     const el = visibleItems[index];
     const type = el.dataset.type;
     const src = el.dataset.src;
-    const caption = el.dataset.caption || '';
 
     lightboxContent.innerHTML = type === 'image'
         ? `<img src="${src}" alt="">`
         : `<video src="${src}" controls autoplay></video>`;
-
-    if (caption) {
-        const cap = document.createElement('div');
-        cap.className = 'lightbox-caption';
-        cap.textContent = caption;
-        lightboxContent.appendChild(cap);
-    }
 
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -1936,13 +1858,11 @@ function navigateLightbox(dir) {
 document.addEventListener('click', (e) => {
     const item = e.target.closest('.gallery-item, .media-item');
     if (item && item.dataset.src) {
-        // Si c'est dans la galerie, ouvrir avec navigation
         if (item.classList.contains('gallery-item')) {
             visibleItems = getVisibleGalleryItems();
             const idx = visibleItems.indexOf(item);
             openLightbox(idx);
         } else {
-            // Média dans une carte timeline : affichage simple
             const type = item.dataset.type;
             const src = item.dataset.src;
             lightboxContent.innerHTML = type === 'image'
