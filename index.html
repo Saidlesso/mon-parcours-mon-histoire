@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LESSO SAID SELOS — Mon Parcours · Mon Serment · Ma Légende</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+    /* ===================== RESET ===================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+        --bg-deep: #07070c;
+        --bg-dark: #0f0f18;
+        --bg-card: rgba(20, 20, 32, 0.72);
+        --gold: #d4af37;
+        --gold-light: #f5e6a3;
+        --gold-dark: #8b6f1f;
+        --cream: #f7f3ee;
+        --text: #e8e3d8;
+        --text-dim: #a89f8e;
+        --accent: #8b5cf6;
+        --accent2: #ec4899;
+        --danger: #e63946;
+        --success: #10b981;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background: var(--bg-deep);
+        color: var(--text);
+        min-height: 100vh;
+        overflow-x: hidden;
+        line-height: 1.6;
+        position: relative;
+    }
+
+    /* ===================== FOND ANIMÉ ===================== */
+    .bg-layer { position: fixed; inset: 0; z-index: -1; overflow: hidden; }
+
+    .bg-gradient {
+        position: absolute; inset: 0;
+        background:
+            radial-gradient(ellipse at 15% 5%, rgba(139, 92, 246, 0.18), transparent 45%),
+            radial-gradient(ellipse at 85% 25%, rgba(212, 175, 55, 0.14), transparent 45%),
+            radial-gradient(ellipse at 50% 80%, rgba(236, 72, 153, 0.1), transparent 50%),
+            radial-gradient(ellipse at 10% 95%, rgba(212, 175, 55, 0.08), transparent 40%),
+            linear-gradient(180deg, #07070c 0%, #0f0f18 50%, #07070c 100%);
+    }
+
+    .stars {
+        position: absolute; inset: 0;
+        background-image:
+            radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.9), transparent),
+            radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.7), transparent),
+            radial-gradient(2px 2px at 80% 20%, rgba(212,175,55,0.8), transparent),
+            radial-gradient(1px 1px at 35% 85%, rgba(255,255,255,0.6), transparent),
+            radial-gradient(1px 1px at 90% 60%, rgba(139,92,246,0.7), transparent),
+            radial-gradient(1.5px 1.5px at 10% 55%, rgba(255,255,255,0.5), transparent),
+            radial-gradient(1px 1px at 45% 15%, rgba(236,72,153,0.6), transparent),
+            radial-gradient(1px 1px at 75% 45%, rgba(255,255,255,0.4), transparent),
+            radial-gradient(1.5px 1.5px at 25% 75%, rgba(212,175,55,0.5), transparent);
+        background-size: 100% 100%;
+        animation: starsMove 180s linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes starsMove {
+        from { transform: translate(0, 0); }
+        to { transform: translate(-120px, -60px); }
+    }
+
+    .particles { position: absolute; inset: 0; }
+    .particle {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0;
+        animation: floatUp linear infinite;
+    }
+    .particle:nth-child(3n) { background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+    .particle:nth-child(3n+1) { background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+    .particle:nth-child(3n+2) { background: var(--accent2); box-shadow: 0 0 12px var(--accent2); }
+
+    @keyframes floatUp {
+        0% { transform: translateY(100vh) scale(0); opacity: 0; }
+        10% { opacity: 0.8; }
+        90% { opacity: 0.8; }
+        100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* ===================== NAVIGATION ===================== */
+    .nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 100;
+        padding: 1rem 2rem;
+        background: rgba(7, 7, 12, 0.7);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s;
+    }
+
+    .nav-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: var(--text-dim);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: color 0.3s;
+        position: relative;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -6px; left: 0;
+        width: 0; height: 1px;
+        background: var(--gold);
+        transition: width 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ===================== CONTENEUR ===================== */
+    .app {
+        max-width: 1150px;
+        margin: 0 auto;
+        padding: 8rem 1.5rem 6rem;
+        position: relative;
+    }
+
+    /* ===================== HERO ===================== */
+    .hero {
+        text-align: center;
+        padding: 3rem 1rem 4rem;
+        position: relative;
+        animation: fadeInDown 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-emblem {
+        width: 110px; height: 110px;
+        margin: 0 auto 2rem;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 45%, var(--gold-dark) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        font-weight: 900;
+        color: #07070c;
+        box-shadow:
+            0 0 0 5px rgba(212,175,55,0.15),
+            0 0 0 10px rgba(212,175,55,0.06),
+            0 25px 60px -10px rgba(212,175,55,0.55);
+        animation: emblemPulse 4s ease-in-out infinite;
+        position: relative;
+    }
+
+    .hero-emblem::before,
+    .hero-emblem::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(212,175,55,0.25);
+    }
+    .hero-emblem::before { inset: -16px; animation: spin 25s linear infinite; }
+    .hero-emblem::after {
+        inset: -28px;
+        border-style: dashed;
+        animation: spin 40s linear infinite reverse;
+    }
+
+    @keyframes emblemPulse {
+        0%, 100% { box-shadow: 0 0 0 5px rgba(212,175,55,0.15), 0 0 0 10px rgba(212,175,55,0.06), 0 25px 60px -10px rgba(212,175,55,0.55); }
+        50% { box-shadow: 0 0 0 10px rgba(212,175,55,0.2), 0 0 0 20px rgba(212,175,55,0.08), 0 30px 70px -10px rgba(212,175,55,0.75); }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .hero-name {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2.4rem, 7vw, 5rem);
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        line-height: 1;
+        background: linear-gradient(135deg, #f5e6a3 0%, #d4af37 40%, #b8860b 70%, #f5e6a3 100%);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shimmer 6s ease-in-out infinite;
+        margin-bottom: 1rem;
+    }
+
+    @keyframes shimmer {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+
+    .hero-lineage {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(1rem, 2.2vw, 1.35rem);
+        color: var(--text-dim);
+        font-style: italic;
+        letter-spacing: 0.04em;
+        margin-bottom: 2rem;
+        line-height: 1.8;
+    }
+
+    .hero-lineage strong {
+        color: var(--gold-light);
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .hero-tag {
+        display: inline-block;
+        font-size: 0.72rem;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--gold);
+        padding: 0.6rem 1.8rem;
+        border: 1px solid rgba(212,175,55,0.3);
+        border-radius: 50px;
+        background: rgba(212,175,55,0.05);
+        backdrop-filter: blur(10px);
+    }
+
+    /* ===================== SERMENT ===================== */
+    .oath {
+        margin: 4rem auto;
+        max-width: 820px;
+        padding: 3rem 2.5rem;
+        border-radius: 28px;
+        background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(139,92,246,0.06) 100%);
+        border: 1px solid rgba(212,175,55,0.25);
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(24px);
+        box-shadow:
+            0 30px 90px -30px rgba(212,175,55,0.4),
+            inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .oath::before {
+        content: '"';
+        position: absolute;
+        top: -40px; left: 20px;
+        font-family: 'Playfair Display', serif;
+        font-size: 12rem;
+        color: rgba(212,175,55,0.08);
+        line-height: 1;
+        pointer-events: none;
+    }
+
+    .oath-label {
+        font-size: 0.7rem;
+        letter-spacing: 0.45em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .oath-label::before,
+    .oath-label::after {
+        content: '';
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        flex: 1;
+    }
+
+    .oath-text {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+        line-height: 1.75;
+        color: var(--cream);
+        font-style: italic;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .oath-text .highlight {
+        color: var(--gold-light);
+        font-weight: 700;
+        font-style: normal;
+        text-shadow: 0 0 25px rgba(212,175,55,0.5);
+    }
+
+    /* ===================== SECTION TITRE ===================== */
+    .section-title {
+        text-align: center;
+        margin: 6rem 0 3.5rem;
+        position: relative;
+    }
+
+    .section-title h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.9rem, 4.5vw, 3rem);
+        font-weight: 700;
+        color: var(--cream);
+        letter-spacing: -0.01em;
+        margin-bottom: 0.7rem;
+    }
+
+    .section-title p {
+        color: var(--text-dim);
+        font-size: 0.95rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 2px;
+        margin: 1.8rem auto 0;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    /* ===================== STATS ===================== */
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 3rem 0 5rem;
+    }
+
+    .stat {
+        text-align: center;
+        padding: 2rem 1rem;
+        border-radius: 20px;
+        background: var(--bg-card);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(212,175,55,0.12);
+        transition: all 0.4s;
+    }
+
+    .stat:hover {
+        transform: translateY(-5px);
+        border-color: rgba(212,175,55,0.4);
+        box-shadow: 0 25px 50px -20px rgba(212,175,55,0.3);
+    }
+
+    .stat-num {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.8rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+    }
+
+    /* ===================== TIMELINE ===================== */
+    .timeline {
+        position: relative;
+        padding-left: 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 12px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(180deg,
+            transparent 0%,
+            rgba(212,175,55,0.6) 10%,
+            rgba(139,92,246,0.5) 40%,
+            rgba(236,72,153,0.5) 70%,
+            rgba(212,175,55,0.6) 90%,
+            transparent 100%);
+        border-radius: 2px;
+    }
+
+    .card {
+        position: relative;
+        background: var(--bg-card);
+        backdrop-filter: blur(24px);
+        border: 1px solid rgba(212,175,55,0.12);
+        border-radius: 24px;
+        padding: 2.2rem 2.2rem 2rem;
+        box-shadow:
+            0 25px 60px -25px rgba(0,0,0,0.8),
+            inset 0 1px 0 rgba(255,255,255,0.05);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    .card.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        left: -3.05rem;
+        top: 2.4rem;
+        width: 22px;
+        height: 22px;
+        background: radial-gradient(circle at 30% 30%, var(--gold-light), var(--gold) 60%, var(--gold-dark));
+        border-radius: 50%;
+        border: 4px solid var(--bg-deep);
+        box-shadow:
+            0 0 0 3px rgba(212,175,55,0.35),
+            0 0 30px rgba(212,175,55,0.7);
+        transition: all 0.4s;
+        z-index: 2;
+    }
+
+    .card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 24px;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(212,175,55,0.4), transparent 40%, transparent 60%, rgba(139,92,246,0.3));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.4s;
+    }
+
+    .card:hover {
+        transform: translateX(8px) translateY(-4px);
+        border-color: rgba(212,175,55,0.35);
+        box-shadow:
+            0 40px 80px -25px rgba(0,0,0,0.9),
+            0 0 70px -20px rgba(212,175,55,0.35);
+    }
+
+    .card:hover::before {
+        transform: scale(1.3);
+        box-shadow:
+            0 0 0 5px rgba(212,175,55,0.55),
+            0 0 45px rgba(212,175,55,1);
+    }
+
+    .card:hover::after { opacity: 1; }
+
+    .card-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.7rem;
+        margin-bottom: 1.3rem;
+    }
+
+    .date-badge {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        padding: 0.45rem 1.1rem;
+        background: rgba(212,175,55,0.1);
+        border: 1px solid rgba(212,175,55,0.3);
+        border-radius: 50px;
+    }
+
+    .emotion-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--text);
+        padding: 0.45rem 1.1rem 0.45rem 0.7rem;
+        background: rgba(139,92,246,0.12);
+        border: 1px solid rgba(139,92,246,0.25);
+        border-radius: 50px;
+    }
+
+    .emotion-badge .emoji {
+        font-size: 1.15rem;
+        filter: drop-shadow(0 0 8px currentColor);
+    }
+
+    .chapter-badge {
+        font-size: 0.68rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--accent2);
+        padding: 0.3rem 0.9rem;
+        background: rgba(236,72,153,0.08);
+        border: 1px solid rgba(236,72,153,0.25);
+        border-radius: 50px;
+        margin-left: auto;
+    }
+
+    .card-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.4rem, 3vw, 1.9rem);
+        font-weight: 700;
+        color: var(--cream);
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+        margin-bottom: 1.2rem;
+        background: linear-gradient(135deg, #fff 0%, var(--gold-light) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .card-desc {
+        font-size: 0.98rem;
+        line-height: 1.8;
+        color: var(--text);
+        white-space: pre-wrap;
+        word-break: break-word;
+        padding: 1.4rem 1.6rem;
+        background: rgba(7,7,12,0.45);
+        border-left: 3px solid var(--gold);
+        border-radius: 0 14px 14px 0;
+        position: relative;
+    }
+
+    .card-desc::first-letter {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.6rem;
+        font-weight: 700;
+        color: var(--gold);
+        float: left;
+        line-height: 0.85;
+        margin: 0.2rem 0.5rem 0 0;
+    }
+
+    .media-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-top: 1.5rem;
+    }
+
+    .media-item {
+        position: relative;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px -15px rgba(0,0,0,0.8);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1px solid rgba(212,175,55,0.15);
+        background: #000;
+        cursor: pointer;
+    }
+
+    .media-item:hover {
+        transform: scale(1.05) translateY(-4px);
+        box-shadow: 0 30px 55px -15px rgba(212,175,55,0.5);
+        border-color: rgba(212,175,55,0.6);
+    }
+
+    .media-item img,
+    .media-item video {
+        display: block;
+        max-width: 280px;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 14px;
+    }
+
+    /* ===================== GALERIE ===================== */
+    .gallery-filters {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-bottom: 3rem;
+    }
+
+    .filter-btn {
+        padding: 0.6rem 1.5rem;
+        border-radius: 50px;
+        border: 1px solid rgba(212,175,55,0.2);
+        background: transparent;
+        color: var(--text-dim);
+        font-size: 0.82rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: inherit;
+    }
+
+    .filter-btn:hover {
+        color: var(--gold);
+        border-color: rgba(212,175,55,0.5);
+    }
+
+    .filter-btn.active {
+        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+        color: #07070c;
+        border-color: transparent;
+        font-weight: 700;
+        box-shadow: 0 10px 25px -8px rgba(212,175,55,0.5);
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1.2rem;
+    }
+
+    .gallery-item {
+        position: relative;
+        border-radius: 18px;
+        overflow: hidden;
+        aspect-ratio: 1;
+        cursor: pointer;
+        border: 1px solid rgba(212,175,55,0.15);
+        background: #0a0a12;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    .gallery-item.revealed {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .gallery-item:hover {
+        transform: scale(1.03) translateY(-5px);
+        border-color: rgba(212,175,55,0.5);
+        box-shadow: 0 30px 60px -20px rgba(212,175,55,0.4);
+        z-index: 2;
+    }
+
+    .gallery-item img,
+    .gallery-item video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-item:hover img,
+    .gallery-item:hover video {
+        transform: scale(1.1);
+    }
+
+    .gallery-item .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 40%, rgba(7,7,12,0.9) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.2rem;
+        opacity: 0;
+        transition: opacity 0.4s;
+    }
+
+    .gallery-item:hover .overlay { opacity: 1; }
+
+    .gallery-item .overlay .caption {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.1rem;
+        font-style: italic;
+        color: var(--cream);
+        line-height: 1.3;
+    }
+
+    .gallery-item .overlay .tag {
+        font-size: 0.68rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.4rem;
+    }
+
+    /* ===================== LIGHTBOX ===================== */
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox.active { display: flex; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .lightbox-content {
+        max-width: 90vw;
+        max-height: 85vh;
+        position: relative;
+        animation: zoomIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes zoomIn {
+        from { transform: scale(0.8); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    .lightbox-content img,
+    .lightbox-content video {
+        max-width: 90vw;
+        max-height: 85vh;
+        border-radius: 16px;
+        border: 1px solid rgba(212,175,55,0.3);
+        box-shadow: 0 40px 80px -20px rgba(0,0,0,0.9);
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: -50px;
+        right: 0;
+        background: rgba(212,175,55,0.15);
+        border: 1px solid rgba(212,175,55,0.4);
+        color: var(--gold);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.4rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+    }
+
+    .lightbox-close:hover {
+        background: var(--gold);
+        color: #07070c;
+        transform: rotate(90deg);
+    }
+
+    /* ===================== PROJET ===================== */
+    .project-card {
+        margin: 4rem auto;
+        max-width: 900px;
+        padding: 3rem 2.5rem;
+        border-radius: 28px;
+        background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(236,72,153,0.08));
+        border: 1px solid rgba(139,92,246,0.3);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .project-card::before {
+        content: 'SELOSCONNECT';
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(3rem, 14vw, 10rem);
+        font-weight: 900;
+        color: rgba(139,92,246,0.06);
+        white-space: nowrap;
+        letter-spacing: 0.1em;
+        pointer-events: none;
+    }
+
+    .project-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--accent2);
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .project-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 900;
+        background: linear-gradient(135deg, #f5e6a3 0%, #d4af37 50%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .project-desc {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--text);
+        max-width: 700px;
+        margin: 0 auto 2rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .project-meta {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.8rem 1.8rem;
+        background: rgba(7,7,12,0.6);
+        border: 1px solid rgba(212,175,55,0.3);
+        border-radius: 50px;
+        position: relative;
+        z-index: 1;
+        backdrop-filter: blur(10px);
+    }
+
+    .project-meta .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--success);
+        box-shadow: 0 0 12px var(--success);
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .project-meta span {
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        font-weight: 500;
+    }
+
+    /* ===================== HÉRITAGE ===================== */
+    .legacy {
+        margin: 6rem auto 0;
+        max-width: 900px;
+        text-align: center;
+        padding: 4rem 2.5rem;
+        border-radius: 28px;
+        background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(236,72,153,0.05));
+        border: 1px solid rgba(212,175,55,0.25);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .legacy::before {
+        content: 'SINATOU HOUSE';
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(3rem, 13vw, 9rem);
+        font-weight: 900;
+        color: rgba(212,175,55,0.05);
+        white-space: nowrap;
+        letter-spacing: 0.1em;
+        pointer-events: none;
+    }
+
+    .legacy p {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+        font-style: italic;
+        color: var(--cream);
+        position: relative;
+        z-index: 1;
+        line-height: 1.8;
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    .legacy p strong {
+        color: var(--gold-light);
+        font-weight: 700;
+        font-style: normal;
+        text-shadow: 0 0 20px rgba(212,175,55,0.4);
+    }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+        margin-top: 8rem;
+        padding-top: 4rem;
+        border-top: 1px solid rgba(212,175,55,0.15);
+        text-align: center;
+    }
+
+    footer .sig {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.6rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 0.02em;
+        margin-bottom: 0.8rem;
+    }
+
+    footer .sub {
+        font-size: 0.72rem;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        margin-bottom: 1rem;
+    }
+
+    footer .quote {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: 1rem;
+        color: var(--gold);
+        opacity: 0.8;
+    }
+
+    /* ===================== ANIMATIONS ===================== */
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 800px) {
+        .nav { padding: 0.8rem 1rem; }
+        .nav-links { display: none; }
+        .app { padding: 6rem 1rem 4rem; }
+        .hero { padding: 2rem 0.5rem 3rem; }
+        .hero-emblem { width: 85px; height: 85px; font-size: 2.3rem; }
+        .timeline { padding-left: 2rem; gap: 2rem; }
+        .timeline::before { left: 8px; }
+        .card { padding: 1.6rem 1.4rem; border-radius: 20px; }
+        .card::before { left: -2.5rem; width: 16px; height: 16px; }
+        .card-desc { padding: 1.1rem 1.2rem; font-size: 0.92rem; }
+        .card-desc::first-letter { font-size: 2.1rem; }
+        .media-item img, .media-item video { max-width: 100%; }
+        .oath, .project-card, .legacy { padding: 2rem 1.4rem; }
+        .chapter-badge { margin-left: 0; }
+        .gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.8rem; }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--bg-deep); }
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+        border-radius: 5px;
+        border: 2px solid var(--bg-deep);
+    }
+</style>
+</head>
+<body>
+
+<!-- ===================== FOND ===================== -->
+<div class="bg-layer">
+    <div class="bg-gradient"></div>
+    <div class="stars"></div>
+    <div class="particles" id="particles"></div>
+</div>
+
+<!-- ===================== NAVIGATION ===================== -->
+<nav class="nav">
+    <div class="nav-logo">L·S·S</div>
+    <ul class="nav-links">
+        <li><a href="#serment">Serment</a></li>
+        <li><a href="#parcours">Parcours</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#projet">SelosConnect</a></li>
+        <li><a href="#heritage">Héritage</a></li>
+    </ul>
+</nav>
+
+<!-- ===================== APPLICATION ===================== -->
+<div class="app">
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-emblem">L</div>
+        <h1 class="hero-name">LESSO SAID SELOS</h1>
+        <p class="hero-lineage">
+            Fils de <strong>YESSOUFOU NABILA</strong> &amp; <strong>LESSO PASCAL</strong><br>
+            Petit-fils de <strong>ADESHIAN SINATOU</strong>
+        </p>
+        <div class="hero-tag">Mon Parcours · Mon Serment · Ma Légende</div>
+    </header>
+
+    <!-- SERMENT -->
+    <section class="oath reveal" id="serment">
+        <div class="oath-label">Mon Serment</div>
+        <p class="oath-text">
+            Je me fais le serment de devenir un <span class="highlight">grand homme</span> —
+            <span class="highlight">impactant</span>, <span class="highlight">respecté</span>,
+            <span class="highlight">digne</span> et <span class="highlight">grand</span>.<br><br>
+            Je suis peut-être là par le hasard des choses, car ma naissance n'était pas évidente.
+            Mais je sais que je suis là pour <span class="highlight">accomplir de grandes choses</span>,
+            m'imposer dans le monde, <span class="highlight">écrire mon histoire</span>
+            et <span class="highlight">devenir puissant</span>.<br><br>
+            Je suis un demi-dieu à mon échelle. Je crée tout ce que je veux.
+            Je matérialise ma vie de rêve, ma vie idéale, mon succès.
+            Je suis né pour m'imposer — et j'ai déclaré le succès sur ma vie.
+        </p>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats reveal">
+        <div class="stat">
+            <div class="stat-num">2023</div>
+            <div class="stat-label">Début du voyage</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">2027</div>
+            <div class="stat-label">Lancement SelosConnect</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Détermination</div>
+        </div>
+    </div>
+
+    <!-- TITRE PARCOURS -->
+    <div class="section-title reveal" id="parcours">
+        <h2>Mon Histoire</h2>
+        <p>Chaque épreuve, chaque joie — gravées à jamais</p>
+    </div>
+
+    <!-- TIMELINE (générée par JS) -->
+    <div class="timeline" id="timeline"></div>
+
+    <!-- TITRE GALERIE -->
+    <div class="section-title reveal" id="galerie">
+        <h2>Galerie</h2>
+        <p>Fragments visuels de mon parcours</p>
+    </div>
+
+    <!-- FILTRES GALERIE -->
+    <div class="gallery-filters reveal">
+        <button class="filter-btn active" data-filter="all">Tout</button>
+        <button class="filter-btn" data-filter="photo">Photos</button>
+        <button class="filter-btn" data-filter="video">Vidéos</button>
+        <button class="filter-btn" data-filter="famille">Famille</button>
+        <button class="filter-btn" data-filter="projet">Projets</button>
+        <button class="filter-btn" data-filter="voyage">Voyages</button>
+    </div>
+
+    <!-- GALERIE (générée par JS) -->
+    <div class="gallery" id="gallery"></div>
+
+    <!-- PROJET SELOSCONNECT -->
+    <section class="project-card reveal" id="projet">
+        <div class="project-label">Mon Projet · Ma Licorne</div>
+        <h2 class="project-title">SELOSCONNECT</h2>
+        <p class="project-desc">
+            Depuis deux ans, je travaille sur ce projet avec une détermination sans pareille.
+            Je ne me laisserai plus distraire. Je me concentre uniquement sur SelosConnect,
+            et je le lancerai au plus tard début janvier 2027.
+            Ce sera une licorne. Il sera utilisé internationalement.
+            Je serai invité partout pour être félicité pour mon projet.
+            Je réussirai ce projet, je le lancerai à tout prix —
+            et ce sera un succès incroyable dans le monde entier.
+        </p>
+        <div class="project-meta">
+            <span class="dot"></span>
+            <span>En développement · Lancement 2027</span>
+        </div>
+    </section>
+
+    <!-- HÉRITAGE -->
+    <section class="legacy reveal" id="heritage">
+        <p>
+            En mémoire de <strong>Mémé SINATOU</strong>,<br>
+            cette promesse que je lui ai faite un samedi soir, dans le noir,<br>
+            alors qu'elle riait encore avec moi et mon cousin.<br><br>
+            Je bâtirai la <strong>SINATOU HOUSE</strong> —<br>
+            une maison où tous ses enfants et petits-enfants<br>
+            pourront se retrouver, un jour, autour d'elle.<br><br>
+            <strong>Je remuerai ciel et terre pour la rendre fière.</strong>
+        </p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="sig">LESSO SAID SELOS</div>
+        <div class="sub">2023 → ∞ · Ad Vitam Aeternam</div>
+        <div class="quote">« Je suis le seul possible issu du lien de mes deux parents. J'ai déclaré le succès sur ma vie. »</div>
+    </footer>
+
+</div>
+
+<!-- ===================== LIGHTBOX ===================== -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content" id="lightboxContent">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+    </div>
+</div>
+
+<script>
+/* =========================================================
+   ⚠️  ZONE 1 : TES SOUVENIRS (Timeline)
+   ---------------------------------------------------------
+   Chaque souvenir = { date, chapitre, emotion, titre, description, medias }
+   - chapitre (optionnel) : "Chapitre I", "Chapitre II"...
+   - emotion : "😰 Anxiété", "😤 Difficulté", "🥳 Célébration"...
+   - medias : [{ type: "image"|"video", src: "chemin/ou/url" }]
+   ========================================================= */
+const SOUVENIRS = [
+
+    {
+        date: "2022 — 2023",
+        chapitre: "Chapitre I",
+        emotion: "😰 Anxiété",
+        titre: "L'arrivée à Calavi",
+        description: `Finalement, père a construit sa maison à Calavi et on a dû déménager vers Calavi. Mais pour moi, Calavi a été le début de belles et aussi de violentes aventures. On devait commencer l'année, je devais faire la terminale et un test s'imposait. Les parents m'avaient choisi l'école Brice Sinsin et tout, et je suis allé pour la première fois passer un test. J'ai échoué, et là, mes parents ne m'ont pas raté ni fait de cadeau. On m'a fait voir à quel point j'étais la « mauvaise graine ». J'ai pris sur moi, même si je les comprenais un peu.
+
+Après, j'étais fatigué avec le stress, les regards, les propos, et j'ai fini par leur dire que j'irais faire du mandarin. J'ai commencé la première journée de cours là-bas, et puis après, papa a décidé encore que non, finalement je revenais à Sinsin et qu'il irait négocier avec le directeur. C'est ainsi que je pars à Sinsin avec lui. J'entre dans l'établissement pour la première fois, animé, et tout de suite j'ai senti qu'ici se passeraient des trucs incroyables pour moi.
+
+Bref, il a négocié avec le directeur, qui a décidé que finalement, au lieu de la série D, je ferais la série B. J'étais fatigué aussi, alors j'ai accepté, et c'est ainsi que je commence Sinsin.
+
+L'année s'est plutôt bien passée, avec des hauts, des bas, des situations difficiles et tout, mais ce que je retiens de meilleur, ce sont des amitiés, des relations et des aventures incroyables. Et aussi, j'ai fini par avoir mon bac à la fin !`,
+        medias: []
+    },
+
+    {
+        date: "Fin 2023",
+        chapitre: "Chapitre II",
+        emotion: "😤 Difficulté",
+        titre: "Le drame de ma vie : la nuit qui m'a fragmenté",
+        description: `Après mon bac, j'étais très heureux, mais toutefois je ne savais pas ce que je voulais faire. Rodney, un ami, m'a mené à des séminaires de centres de formation et d'université, et là, il m'a fait connaître l'EIG et le développement. On devait commencer ensemble et tout, mais bref, je passe cette partie.
+
+Un jour, je pars à l'UAC pour les procédures afin de récupérer ma bourse. Visiblement, mon père m'appelait, mais moi je ne savais pas, je n'avais pas remarqué. Bref, je rentre le soir et, sur le portail, il me gifle violemment devant tout le quartier — même le zem était téléspectateur de la scène. Je ne comprenais rien. Mais bref, je n'ai rien dit, je suis rentré et je me déshabillais, et là, il rentre et me balance à la figure violemment, sans cœur, sans manière, sans respect, sans sagesse, que Mémé, ma grand-mère — cette personne qui comptait pour moi plus que tout être sur cette terre —, est morte.
+
+J'étais détruit, perdu, embrouillé. Et le comble, c'est qu'il ne s'est pas arrêté à son manque de sagesse : il vient et est en train de me crier dessus pour quelque chose alors que je pleurais et que je ne lui répondais pas. Il rentre encore dans la chambre, vient me mettre des savates de pied à plusieurs reprises et m'insulte. J'étais tétanisé, dépassé, et si j'avais dû réagir, j'allais l'éliminer sur place, car il m'a passé par la tête à ce coup instant bien des choses. Le comble encore, sa femme vient pour me sermonner elle aussi. Je ne lui ai pas répondu et elle a lancé une phrase que je n'oublierai jamais : « Et si c'est moi qui a tué ta grand-mère ? » Depuis ce jour, j'ai en moi une vraie haine viscérale envers les deux que je n'oublierai jamais.
+
+Pourtant, le samedi avant sa mort, je l'avais appelée en appel vidéo, et on parlait, on riait avec mon cousin et tout. Je m'étais même senti mal car elle n'avait pas l'électricité, était dans le noir, et je lui avais promis de remuer ciel et terre pour la rendre fière et lui offrir tout ce que ses enfants n'ont pas pu lui faire. Je lui narrais comment j'allais l'envoyer se faire réviser la santé en Égypte et tout, et comment j'allais construire une maison, la « SINATOU HOUSE », où tous les enfants et petits-enfants pourront venir rester avec elle un jour.
+
+Le lendemain de l'annonce cruelle, je fais le nécessaire pour aller à Porto. Même avant mon arrivée, on l'avait déjà enterrée. J'étais fatigué de tout et de la vie, j'en voulais à tout le monde. Là-bas, j'ai vu mon pépé sorcier et les grandes sœurs de mémé, qui ont commencé par des attaques de propos et tout. Puis, en priant, elle ne savait pas que je l'observais, mais j'ai remarqué qu'elle a mis la main dans son sac, a touché quelque chose qui a claqué, et la main vers moi...
+
+À un moment, je me suis éloigné de tout le monde et je suis allé dans un couloir noir. Là, il y avait une porte ouverte, et intérieurement je me dis : « Même si vous êtes là, je veux que vous vous manifestiez, faites fermer cette porte. » Et puis la porte s'est vraiment fermée. J'étais impressionné et apeuré à la fois, mais très heureux finalement, car je me suis dit qu'elle était heureuse de ma présence.
+
+Après, je suis resté chez ma tante préférée — la sœur de ma maman — un bon moment. Puis je suis rentré à Cotonou, et là, les deux tantes, les sœurs de mon père, m'attrapent le col de mon habit, menacent de me frapper, parce que je ne leur réponds pas comme elles veulent. Mes propres frères et leur mère m'avaient encore préparé une surprise. Mais je ne dis rien. Je pars à l'EIG récupérer l'uniforme, le nécessaire pour commencer mon année.`,
+        medias: []
+    },
+
+    {
+        date: "2023 — 2024",
+        chapitre: "Chapitre III",
+        emotion: "😰 Anxiété",
+        titre: "L'enfer sur terre : la première année à l'EIG",
+        description: `Ma scolarité de 1 million de FCFA pour 2 ans de formation était problématique — pas pour papa, mais pour maman et sa team. Elle a monté sa team, les tantes, contre moi. Je suis devenu la mauvaise graine de toute une famille.
+
+Au même moment que j'obtenais mon bac, mon cousin aussi l'obtient. Pour eux, je devais faire pareil que lui : aller à la fac et tout ce que moi je ne me voyais pas nécessairement faire. C'était devenu une guerre, des attaques. Elle s'est débrouillée, et toute la famille a su que Said fait telle formation dans telle université, que c'est tel prix. Ma bienveillance s'est transformée en mal, en celui qui envie ce qu'il ne doit ou ne peut pas avoir. Jusqu'à un niveau où papa a eu une phase difficile, et finalement j'ai dû rester à la maison durant 4 mois au beau milieu de ma formation.
+
+Déjà, après la mort de Mémé, je m'étais éloigné de tout le monde. Je n'avais plus d'amis, plus de copine, plus rien. J'étais solo, seule dans mes chagrins.
+
+Alors durant les 4 mois, j'étais désespéré, et je voulais devenir riche tout en restant fidèle à l'éducation reçue de ma grande-mère : tout ce que tu fais de mal te rattrapera tôt ou tard. On ne vole pas, on n'arnaque pas, on ne fait pas de mal. Nuit et jour, je suivais des formations vidéo YouTube sur l'e-commerce, jusqu'à comprendre que j'aurais bien des blocages avec Stripe et ses aléas. Alors je me tourne vers le trading.
+
+Au même moment, ma bourse vint. Je décide de prendre des risques et de me lancer avec la bourse. Je charge mon compte, et au départ c'était bien, je gagnais de l'argent, j'avais fait évoluer la somme vers plusieurs millions. Puis en une journée, j'ai tout perdu. J'étais encore mal barré, et là je l'ai bien cherché. Je ne pouvais rien dire à personne — que j'avais récupéré la bourse pour faire du trading — alors je disais ne pas avoir postulé pour la bourse. On s'est mis à m'insulter dans toute la famille et à me comparer à mon fameux cousin. Alors que moi, j'avais même pris ma bourse avant lui. Mais je ne disais rien, car je l'ai bien cherché. Mais je l'ai mal vécu.
+
+Chaque jour, surtout la femme de père — depuis que mon père n'est plus avec ma mère, c'est ma deuxième maman — faisait tout pour me faire me sentir mal : des manières, des propos, des discours, des comparaisons, des agissements, tout pour me toucher. Puis vient l'étape de mon grand frère : puisque lui n'a pas grandi avec père, sa maman non plus n'est pas avec papa, elle a commencé à faire comme si c'était moi, ma faute, si l'autre n'avait pas suivi une formation. Mais quand tu narres l'histoire, tu comprends que ce n'était pas mon frère qu'elle défendait — c'était sa vision, tout ce qui pouvait lui permettre de m'attaquer. Elle disait que c'est à cause de moi, pourquoi on va me payer une formation et pas à lui. Mais après, finalement, ça s'est retourné contre mon frère aussi, et elle a trouvé que c'est un ingrat. Quand tu n'es plus utile ou pas comme elle veut, alors tu n'es pas normal, tu es un méchant.
+
+Cette phase de ma vie a été longue et pleine de souffrance. J'étais tellement traumatisé de tout que je ne pouvais même pas demander de l'argent pour manger ou me déplacer. Alors je m'y prends à pied, parfois. Parfois je supplie des amis. Quand un ami part au cours, je pars l'attendre à son carrefour pendant des minutes, je transpire. Après, quand lui est prêt à rentrer, je n'ai pas le choix, je dois courir pour rentrer avec lui. Je ne peux tout narrer, mais c'était une période rude et de souffrance qui a continué jusqu'en 2025.`,
+        medias: []
+    },
+
+    {
+        date: "2024",
+        chapitre: "Chapitre IV",
+        emotion: "💪 Courage",
+        titre: "La fugue au Nigeria : ma première bouffée de liberté",
+        description: `À un niveau, j'étais fatigué de tout, et j'ai dû fuguer pour aller au Nigeria. La première fois de ma vie, même si j'étais affamé ou dans une situation précaire, je me suis senti heureux et libre.
+
+Après, les gars avec qui on était là-bas leur ont écrit pour nous tendre un piège pour rentrer. Mais le comble, ils se croyaient tous plus intelligents ou plus malins que moi. Je sais tout, et j'ai laissé faire, parce que mon cousin avec qui je suis parti là-bas se plaignait et voulait qu'on rentre, finalement.
+
+À mon retour, c'est allé de mal en pire. Puis j'ai trouvé un stage à AS, dans les moyens de déplacement. J'ai dû laisser, car j'étais seul face à ma personne, personne ne m'aidait.
+
+Après tout ça, j'ai bien fait la deuxième année à l'EIG, mais je ne me laissais plus trop faire. Je commençais à en avoir marre et à avoir du répondant envers eux tous. Je finis mon année, mais pas bien compétent, car les 4 mois ont créé un déstabilisement, et plus rien n'est comme au départ.`,
+        medias: []
+    },
+
+    {
+        date: "2024 — 2025",
+        chapitre: "Chapitre V",
+        emotion: "😤 Difficulté",
+        titre: "La quête : petits jobs, grandes leçons",
+        description: `Après, j'étais à la maison à ne rien faire. J'ai décidé de me rattraper. Je commençais à réapprendre les choses seul. Et là, je commençais à avoir des idées, des projets à créer — et SelosConnect est né dans ma tête.
+
+Puis la pression commence : que je dois aller chercher du travail, que je suis un garçon, que je suis pressueux et tout. Alors on connaissait une dame de l'ANPE, je commençais à lui demander des jobs. J'ai eu à vendre des croquettes et tout, et on me payait un salaire. Puis ce programme a pris fin. J'étais là, sans rien. Ça a repris — on me faisait sentir, par des propos, des gestes, des manières, que je suis paresseux. Alors que moi, je travaillais, je cherchais mes opportunités sans rien dire à personne. Je ne suis pas le genre de personne qui raconte tout ce qu'il fait partout pour qu'on voie qu'il est travailleur, ou pour éprouver de la pitié pour lui.
+
+J'ai pris un de mes projets et je suis allé voir Monsieur Wass. De discussion en discussion, il m'a offert un emploi. J'ai fait deux mois et me suis rendu compte que ma place n'est pas là. Alors avec mes deux salaires, j'ai économisé pour lancer encore un business, seul.
+
+Je pars à Ouidah, dans un village inconnu, pour acheter du coco chez des gars. J'ai eu à acheter tout le nécessaire pour produire du jus de coco embouteillé. À Ouidah, après mon achat, mes fonds restants ne pouvaient plus suffire pour le déplacement, car ils me donnaient des prix trop élevés pour transporter les cocos sur Calavi. Alors j'ai appelé mon père pour m'aider. Il m'a fait comprendre à quel point je suis un enfant sorcier. J'ai compris qu'il n'avait pas nécessairement les moyens. Alors je suis rentré. Je devais trouver l'argent pour aller prendre la marchandise, et là me sauve Pethutlle, ma copine. Elle m'envoie 11 euros comme ça. Avec ça, je repars là-bas avec des bidons. J'ai changé de stratégie : je casse tout et récupère l'eau en bidon.
+
+Une fois là-bas, là où on a stocké la marchandise, les gens ont volé près de la moitié de ma commande. Le reste a été mis dans les bidons. Je transporte moi-même sur moto les trois bidons de 25 L avec l'eau de coco pour rentrer sur Calavi. Une fois à la maison, drame : tout est gâté. Toute l'eau est gâtée, et j'ai tout perdu, peut-être tout. Mais j'ai grandi, et j'ai fait le premier pas dans l'entrepreneuriat.
+
+Après ça, j'étais fauché, je cherchais des jobs. Je suis allé travailler chez les Chinois en cuisine. Je rentrais à 3 h. Ils n'ont pas validé, mais en vrai, ils m'énervaient, car c'est eux qui me trouvent paresseux, et quand je trouve quelque chose, ils critiquent ou ne sont d'aucune aide ni utilité pour moi. Mais cela aussi j'ai dû abandonner, car dès le jour 3, je n'avais plus de ressources pour me déplacer.
+
+Et là je me retrouve encore à la maison. Après, j'ai encore cherché, même en sachant que je n'aurais pas le déplacement. Je ne décourage pas. Je cherche, et j'ai trouvé et forcé divers : je me suis auto-formé en barman, mixologie, golf, agent d'accueil, assistant, et tout, juste pour décrocher des opportunités. Même en data analyst. Mais à chaque fois, la conclusion est : je suis contraint d'abandonner, car je ne pouvais me rendre à ces lieux de travail de manière pérenne.
+
+Après, la dame de l'ANPE m'a trouvé une opportunité au nord. La vie s'est débrouillée pour que je n'y aille pas. Peut-être que ma place n'y était pas.
+
+Toutefois, je continue toujours de travailler sur mes projets. Je reprends un deuxième : je pars le présenter à Fridaousse, il valide et décide que je vais travailler avec lui. Pareil, je fais absolument tout, j'ai remué ciel et terre pour tenir, mais j'ai tenu 1 semaine et 5 jours comme ça. Après, je ne pouvais plus, le déplacement me bloque.`,
+        medias: []
+    },
+
+    {
+        date: "Aujourd'hui — 2027",
+        chapitre: "Chapitre VI",
+        emotion: "🥳 Célébration",
+        titre: "SelosConnect : ma licorne, mon destin",
+        description: `Actuellement, je continue de travailler sur mes projets. Il y a SelosConnect, que j'ai revu, changé de modèle, de système et de vision. Je ferai tout pour me concentrer uniquement sur SelosConnect, et le lancer au plus tard début janvier 2027.
+
+Je crois fortement en ce projet, sur lequel je travaille depuis 2 ans. Ce sera une licorne. Je serai invité partout pour être félicité pour mon projet. Je réussirai ce projet, je le lancerai à tout prix, et il sera un succès incroyable dans le monde entier. Il sera internationalement utilisé.
+
+J'ai une détermination sans pareil, et je crois en mes capacités. Je suis un demi-dieu à mon échelle. Je crée tout ce que je veux. Je matérialise ma vie de rêve, ma vie idéale, mon succès. Je suis né pour m'imposer. Je suis le seul comme moi sur cette terre, car je suis le seul possible issu du lien de mes deux parents. Et j'ai déclaré le succès sur ma vie.
+
+Ceci n'est que le début.`,
+        medias: []
+    }
+
+];
+
+/* =========================================================
+   ⚠️  ZONE 2 : TA GALERIE
+   ---------------------------------------------------------
+   Chaque élément = { type: "image"|"video", src, caption, tag }
+   - tag : "photo" | "video" | "famille" | "projet" | "voyage"
+   ========================================================= */
+const GALERIE = [
+    // Exemples — remplace "src" par tes propres fichiers ou URLs
+    // { type: "image", src: "photos/calavi.jpg", caption: "Arrivée à Calavi", tag: "voyage" },
+    // { type: "image", src: "photos/meme.jpg", caption: "Mémé Sinatou", tag: "famille" },
+    // { type: "video", src: "videos/selosconnect-demo.mp4", caption: "Démo SelosConnect", tag: "projet" },
+];
+
+/* =========================================================
+   RENDU — Ne pas toucher
+   ========================================================= */
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text ?? '';
+    return div.innerHTML;
+}
+
+function renderMedia(m) {
+    if (!m || !m.src) return '';
+    if (m.type === 'image') {
+        return `<div class="media-item" data-type="image" data-src="${m.src}">
+            <img src="${m.src}" alt="Souvenir" loading="lazy">
+        </div>`;
+    }
+    if (m.type === 'video') {
+        return `<div class="media-item" data-type="video" data-src="${m.src}">
+            <video src="${m.src}" muted preload="metadata"></video>
+        </div>`;
+    }
+    return '';
+}
+
+function renderCard(s) {
+    const [emoji, ...rest] = (s.emotion || '✨').trim().split(' ');
+    const emotionLabel = rest.join(' ') || 'Souvenir';
+    const mediasHtml = (s.medias && s.medias.length)
+        ? `<div class="media-grid">${s.medias.map(renderMedia).join('')}</div>`
+        : '';
+    const chapitreHtml = s.chapitre
+        ? `<span class="chapter-badge">${escapeHtml(s.chapitre)}</span>`
+        : '';
+
+    return `
+        <article class="card">
+            <div class="card-header">
+                <span class="date-badge">${escapeHtml(s.date)}</span>
+                <span class="emotion-badge">
+                    <span class="emoji">${emoji}</span> ${escapeHtml(emotionLabel)}
+                </span>
+                ${chapitreHtml}
+            </div>
+            <h3 class="card-title">${escapeHtml(s.titre)}</h3>
+            <div class="card-desc">${escapeHtml(s.description)}</div>
+            ${mediasHtml}
+        </article>
+    `;
+}
+
+function renderGalleryItem(item, index) {
+    const mediaHtml = item.type === 'image'
+        ? `<img src="${item.src}" alt="${escapeHtml(item.caption || '')}" loading="lazy">`
+        : `<video src="${item.src}" muted preload="metadata"></video>`;
+
+    return `
+        <div class="gallery-item" data-tag="${item.tag || 'all'}" data-type="${item.type}" data-src="${item.src}" data-caption="${escapeHtml(item.caption || '')}">
+            ${mediaHtml}
+            <div class="overlay">
+                <div class="tag">${escapeHtml(item.tag || '')}</div>
+                <div class="caption">${escapeHtml(item.caption || '')}</div>
+            </div>
+        </div>
+    `;
+}
+
+// Injection Timeline
+const timelineEl = document.getElementById('timeline');
+timelineEl.innerHTML = SOUVENIRS.map(renderCard).join('');
+
+// Injection Galerie
+const galleryEl = document.getElementById('gallery');
+if (GALERIE.length === 0) {
+    galleryEl.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; border: 2px dashed rgba(212,175,55,0.3); border-radius: 20px; color: var(--text-dim);">
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic;">
+                ✦ Ajoute tes photos et vidéos dans le tableau <code style="color: var(--gold);">GALERIE</code> ✦
+            </p>
+        </div>`;
+} else {
+    galleryEl.innerHTML = GALERIE.map(renderGalleryItem).join('');
+}
+
+// Particules
+(function createParticles() {
+    const container = document.getElementById('particles');
+    const count = 40;
+    for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const size = 2 + Math.random() * 4;
+        p.style.left = Math.random() * 100 + '%';
+        p.style.width = p.style.height = size + 'px';
+        p.style.animationDuration = (12 + Math.random() * 25) + 's';
+        p.style.animationDelay = (Math.random() * 25) + 's';
+        container.appendChild(p);
+    }
+})();
+
+// Reveal au scroll
+(function revealOnScroll() {
+    const els = document.querySelectorAll('.reveal, .card, .gallery-item');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible', 'revealed');
+                }, i * 60);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    els.forEach(el => observer.observe(el));
+})();
+
+// Filtres galerie
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            if (filter === 'all' || item.dataset.tag === filter || item.dataset.type === filter) {
+                item.style.display = '';
+                setTimeout(() => item.style.opacity = '1', 10);
+            } else {
+                item.style.opacity = '0';
+                setTimeout(() => item.style.display = 'none', 300);
+            }
+        });
+    });
+});
+
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxContent = document.getElementById('lightboxContent');
+const lightboxClose = document.getElementById('lightboxClose');
+
+document.addEventListener('click', (e) => {
+    const media = e.target.closest('.media-item, .gallery-item');
+    if (media && media.dataset.src) {
+        const type = media.dataset.type;
+        const src = media.dataset.src;
+        const caption = media.dataset.caption || '';
+
+        const closeBtn = lightboxClose.outerHTML;
+        const content = type === 'image'
+            ? `<img src="${src}" alt="">`
+            : `<video src="${src}" controls autoplay></video>`;
+        const captionHtml = caption
+            ? `<div style="text-align:center; margin-top:1rem; font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--gold-light); font-size:1.2rem;">${escapeHtml(caption)}</div>`
+            : '';
+        lightboxContent.innerHTML = closeBtn + content + captionHtml;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Re-bind close
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    }
+});
+
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    lightboxContent.innerHTML = '';
+}
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+});
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+});
+
+// Smooth scroll pour la nav
+document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+</script>
+
+</body>
+</html>
